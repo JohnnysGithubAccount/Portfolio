@@ -570,7 +570,7 @@ footer{
         display: flex;
         align-items: center;
         justify-content: center;
-        color: var(--color-white);
+        color: #ffff;
     }
     .featured-box{
         flex-direction: column;
