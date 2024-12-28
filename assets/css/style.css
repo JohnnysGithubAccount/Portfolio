@@ -479,6 +479,7 @@ textarea{
     padding: 15px 20px;
     outline: none;
     resize: none;
+    color: var(--text-color-third)
 }
 .form-button>.btn{
     display: flex;
