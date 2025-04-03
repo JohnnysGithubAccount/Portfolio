@@ -115,3 +115,73 @@ function scrollActive() {
 }
 
 window.addEventListener('scroll', scrollActive)
+
+/* ----- BUTTON FUNCTIONALITIES ----- */
+document.addEventListener('DOMContentLoaded', function() {
+  // Store original button states
+  const downloadButtons = {};
+  
+  // Hire Me button functionality
+  const hireMeButtons = document.querySelectorAll('.blue-btn');
+  hireMeButtons.forEach(button => {
+      button.addEventListener('click', function(e) {
+          e.preventDefault();
+          document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+          
+          const contactForm = document.querySelector('.form-control');
+          contactForm.classList.add('pulse-animation');
+          setTimeout(() => {
+              contactForm.classList.remove('pulse-animation');
+          }, 2000);
+          
+          const firstInput = document.querySelector('.input-field');
+          if (firstInput) {
+              setTimeout(() => {
+                  firstInput.focus();
+              }, 1000);
+          }
+      });
+  });
+
+  // Download CV button functionality (multiple downloads)
+  const downloadCVButtons = document.querySelectorAll('.btn:not(.blue-btn)');
+  downloadCVButtons.forEach(button => {
+      if (button.textContent.includes('Download CV')) {
+          // Save original state
+          downloadButtons[button.id || button.textContent] = {
+              html: button.innerHTML,
+              class: button.className
+          };
+          
+          button.addEventListener('click', function(e) {
+              e.preventDefault();
+              
+              // Create fresh download link each time
+              const link = document.createElement('a');
+              link.href = 'assets/files/resume.pdf';
+              link.download = 'Johnny_AI_Engineer_CV.pdf';
+              link.target = '_blank';  // Open in new tab if download fails
+              
+              // Reset button state before showing new confirmation
+              const original = downloadButtons[button.id || button.textContent];
+              button.innerHTML = original.html;
+              button.className = original.class;
+              
+              // Trigger download
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+              
+              // Show confirmation
+              button.innerHTML = 'Downloaded! <i class="uil uil-check-circle"></i>';
+              button.classList.add('downloaded');
+              
+              // Reset after 3 seconds
+              setTimeout(() => {
+                  button.innerHTML = original.html;
+                  button.classList.remove('downloaded');
+              }, 1000);
+          });
+      }
+  });
+});

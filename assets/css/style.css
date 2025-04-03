@@ -502,7 +502,7 @@ footer{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    row-gap: 30px;
+    row-gap: 5px;
     background: #F8F8F8;
     padding-block: 40px 60px;
 }
@@ -640,3 +640,144 @@ footer{
         width: 100%;
     }
 }
+
+/* ----------- */
+.project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    margin-top: 1.5rem;
+    color: white; /* Added white text color */
+}
+
+.project-card {
+    background: var(--card-color);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.project-header h3 {
+    font-size: 1.2rem;
+    color: white; /* Changed to white */
+    margin-right: 1rem;
+}
+
+.project-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+}
+
+.project-content {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.project-gallery {
+    flex: 1;
+    display: flex;
+    flex-direction: column; /* Changed to vertical stacking */
+    gap: 1rem;
+    min-width: 300px;
+}
+
+.project-gallery img {
+    width: 100%;
+    border-radius: 8px;
+    object-fit: contain;
+    aspect-ratio: 16/9;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.project-gallery img:hover {
+    transform: scale(1.02);
+}
+
+.project-details {
+    flex: 1.5;
+}
+
+.date {
+    color: #cccccc; /* Lighter gray for date */
+    font-size: 0.9rem;
+}
+
+.github-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.9rem;
+}
+
+.technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.technologies span {
+    background: rgba(255, 255, 255, 0.1); /* Lighter background for better visibility */
+    color: white; /* White text */
+    padding: 0.3rem 0.7rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+.project-description {
+    margin-left: 1rem;
+    color: #dddddd; /* Light gray for description */
+    line-height: 1.6;
+}
+
+.project-description li {
+    margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .project-header {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .project-meta {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .project-content {
+        flex-direction: column;
+    }
+    
+    .project-gallery {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ------------------- */
+/* .pulse-animation {
+    animation: pulse 2s ease-in-out;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(33, 150, 243, 0.4); }
+    70% { box-shadow: 0 0 0 15px rgba(33, 150, 243, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(33, 150, 243, 0); }
+} */
